@@ -33,7 +33,7 @@ class Application extends ConsoleApplication
     /**
      * Symfony Console Application version
      */
-    const VERSION = '1.0.0';
+    const VERSION = '1.0.5';
 
     /**
      * Default configuration file name
@@ -838,6 +838,10 @@ class Application extends ConsoleApplication
             }
 
             $reflectionClass = new ReflectionClass($class);
+
+            if (! $reflectionClass->isInstantiable()) {
+                continue;
+            }
 
             $parentClass = null;
 
